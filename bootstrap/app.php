@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withSchedule(function (Schedule $schedule) {
-        $schedule->call(new UpdateCpqData)->daily();
+        // $schedule->call(new UpdateCpqData)->daily();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
