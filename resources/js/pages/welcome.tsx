@@ -1,15 +1,8 @@
-import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
-import {
-    Card,
-    CardHeader,
-    CardTitle,
-    CardDescription,
-    CardContent,
-    CardFooter,
-} from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { type SharedData } from '@/types';
+import { Head, usePage } from '@inertiajs/react';
+import { useState } from 'react';
 
 export default function Welcome() {
     const { auth } = usePage<SharedData>().props;
@@ -27,32 +20,22 @@ export default function Welcome() {
     return (
         <>
             <Head title="Configure Your Brompton" />
-            <div className="py-8 px-6 flex justify-center">
-                <div className="w-full max-w-[1600px] grid grid-cols-1 md:grid-cols-[5fr_2fr] gap-8">
-                    <div className="relative w-full rounded-xl overflow-hidden">
-                        Bike goes here...
-                    </div>
+            <div className="flex justify-center px-6 py-8">
+                <div className="grid w-full max-w-[1600px] grid-cols-1 gap-8 md:grid-cols-[5fr_2fr]">
+                    <div className="relative w-full overflow-hidden rounded-xl">Bike goes here...</div>
                     <div className="w-full">
-                        <Card className="sticky top-10 w-full shadow-lg p-6">
-                            <CardHeader className="p-0 space-y-2">
+                        <Card className="sticky top-10 w-full p-6 shadow-lg">
+                            <CardHeader className="space-y-2 p-0">
                                 <CardTitle className="text-2xl">Configure your Brompton</CardTitle>
-                                <CardDescription className="text-sm">
-                                    Choose your style and components
-                                </CardDescription>
+                                <CardDescription className="text-sm">Choose your style and components</CardDescription>
                             </CardHeader>
-                            <CardContent className="p-0 space-y-6">
-                                {/* Selectors go here... */}
-                            </CardContent>
-                            <CardFooter className="flex flex-col gap-4 items-start p-0 pt-4 border-t">
-                                <div className="flex justify-between w-full items-center">
+                            <CardContent className="space-y-6 p-0">{/* Selectors go here... */}</CardContent>
+                            <CardFooter className="flex flex-col items-start gap-4 border-t p-0 pt-4">
+                                <div className="flex w-full items-center justify-between">
                                     <div>
-                                        <div className="text-xl font-semibold relative">
-                                            £2150.00
-                                        </div>
+                                        <div className="relative text-xl font-semibold">£2150.00</div>
                                     </div>
-                                    <Button
-                                        size="lg"
-                                        className="ml-auto">
+                                    <Button size="lg" className="ml-auto">
                                         Add to cart
                                     </Button>
                                 </div>

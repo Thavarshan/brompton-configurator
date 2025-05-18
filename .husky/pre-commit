@@ -22,7 +22,7 @@ bin/test.sh # exits non-zero on failures
 
 echo "Installing frontend dependencies…"
 # install in CI-friendly, deterministic mode
-npm ci
+npm ci --legacy-peer-deps
 
 echo "Formatting frontend code…"
 npm run format
