@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Exit on any error, undefined var, or failed pipe
+set -euo pipefail
+
+# Move to project root (assumes this script lives in bin/)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$PROJECT_ROOT"
+
+echo "Running PHP fixes, lint & tests…"
+
+# 1. PHP fixer / linter (your bin/fix.sh & bin/lint.sh)
+chmod +x bin/fix.sh
+bin/fix.sh --fix # run in “fix” mode
+chmod +x bin/lint.sh
+bin/lint.sh # lint only
+
+# 2. PHP unit tests
+chmod +x bin/test.sh
+bin/test.sh # exits non-zero on failures
+
+echo "Installing frontend dependencies…"
+# install in CI-friendly, deterministic mode
+npm ci
+
+echo "Formatting frontend code…"
+npm run format
+
+echo "Linting frontend…"
+npm run lint
+
+echo "Building frontend assets…"
+npm run build
+
+echo "Pre-commit checks passed!"
